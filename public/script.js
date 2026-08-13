@@ -325,7 +325,7 @@ function auth(type) {
         </label>
         <button class="btn btn-primary" type="submit">Login</button>
         <p style="font-size:12px; color:#777; margin-top: 15px;">
-          Use seeded accounts like: <b>rakib@gmail.com</b> with password <b>password123</b>.
+          Use seeded accounts like: <b>luin@gmail.com</b> with password <b>password123</b>.
         </p>
       </form>
     `;
