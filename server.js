@@ -97,7 +97,7 @@ function initializeDatabase() {
           { name: 'Nusrat Jahan', email: 'nusrat@gmail.com', phone: '01744444444', password: hashedPassword, blood_group: 'B+', location: 'Mohammadpur, Dhaka', role: 'donor', is_available: 1 },
           { name: 'Fahim Rahman', email: 'fahim@gmail.com', phone: '01755555555', password: hashedPassword, blood_group: 'O-', location: 'Banani, Dhaka', role: 'donor', is_available: 1 },
           { name: 'Mitu Akter', email: 'mitu@gmail.com', phone: '01766666666', password: hashedPassword, blood_group: 'AB+', location: 'Gulshan, Dhaka', role: 'donor', is_available: 1 },
-          { name: 'Rakib Hasan', email: 'rakib@gmail.com', phone: '01710101010', password: hashedPassword, blood_group: 'O+', location: 'Mirpur, Dhaka', role: 'donor', is_available: 1 },
+          { name: 'Rakib Hasan', email: 'luin@gmail.com', phone: '01710101010', password: hashedPassword, blood_group: 'O+', location: 'Mirpur, Dhaka', role: 'donor', is_available: 1 },
           { name: 'Admin User', email: 'admin@lifedrop.com', phone: '01700000000', password: bcrypt.hashSync('adminpassword', 10), blood_group: 'O+', location: 'Dhaka', role: 'admin', is_available: 0 }
         ];
 
