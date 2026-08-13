@@ -950,7 +950,7 @@ function toast(message) {
 let lastSpawn = 0;
 document.addEventListener('mousemove', function(e) {
   const now = Date.now();
-  if (now - lastSpawn < 50) return; // limit spawning speed for performance
+  if (now - lastSpawn < 160) return; // spawn less frequently for a clean, elegant look
   lastSpawn = now;
 
   const drop = document.createElement('div');
@@ -958,9 +958,9 @@ document.addEventListener('mousemove', function(e) {
   drop.style.left = e.pageX + 'px';
   drop.style.top = e.pageY + 'px';
 
-  // random angle and distance drift downward
-  const xVal = (Math.random() - 0.5) * 50; // drift left/right
-  const yVal = Math.random() * 60 + 30;     // drift downward
+  // random slow drift downward and slightly sideways
+  const xVal = (Math.random() - 0.5) * 30;
+  const yVal = Math.random() * 30 + 10;
 
   drop.style.setProperty('--x', `${xVal}px`);
   drop.style.setProperty('--y', `${yVal}px`);
@@ -969,5 +969,5 @@ document.addEventListener('mousemove', function(e) {
 
   setTimeout(() => {
     drop.remove();
-  }, 800);
+  }, 1600);
 });
