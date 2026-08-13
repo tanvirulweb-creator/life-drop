@@ -9,6 +9,7 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
+// User state helper
 function getUser() {
   const user = localStorage.getItem('user');
   return user ? JSON.parse(user) : null;
@@ -944,3 +945,29 @@ function toast(message) {
     toastElement.classList.remove("show");
   }, 3000);
 }
+
+// Mouse move blood drop particle spawns
+let lastSpawn = 0;
+document.addEventListener('mousemove', function(e) {
+  const now = Date.now();
+  if (now - lastSpawn < 50) return; // limit spawning speed for performance
+  lastSpawn = now;
+
+  const drop = document.createElement('div');
+  drop.className = 'blood-particle';
+  drop.style.left = e.pageX + 'px';
+  drop.style.top = e.pageY + 'px';
+
+  // random angle and distance drift downward
+  const xVal = (Math.random() - 0.5) * 50; // drift left/right
+  const yVal = Math.random() * 60 + 30;     // drift downward
+
+  drop.style.setProperty('--x', `${xVal}px`);
+  drop.style.setProperty('--y', `${yVal}px`);
+
+  document.body.appendChild(drop);
+
+  setTimeout(() => {
+    drop.remove();
+  }, 800);
+});
