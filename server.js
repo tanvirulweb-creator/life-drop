@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'lifedrop_secret_key_12345';
-const DB_PATH = path.join(__dirname, 'lifedrop.db');
+const DB_PATH = process.env.VERCEL ? ':memory:' : path.join(__dirname, 'lifedrop.db');
 
 // Middleware
 app.use(cors());
@@ -391,7 +391,12 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Start Server (only if not running as a serverless function on Vercel)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+// Export app for Vercel serverless deployment
+module.exports = app;
