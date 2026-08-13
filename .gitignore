@@ -1,0 +1,4 @@
+node_modules/
+lifedrop.db
+.DS_Store
+.env
