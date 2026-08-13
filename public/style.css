@@ -1470,22 +1470,25 @@ html, body {
 /* Blood Drop Particles */
 .blood-particle {
   position: absolute;
-  width: 8px;
-  height: 12px;
-  background: rgba(215, 25, 63, 0.7);
+  width: 6px;
+  height: 10px;
+  background: rgba(215, 25, 63, 0.45);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   pointer-events: none;
   z-index: 9999;
-  animation: floatDrop 0.8s ease-out forwards;
+  animation: floatDrop 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @keyframes floatDrop {
   0% {
     transform: translate(-50%, -50%) translateY(0) scale(1);
-    opacity: 0.8;
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.4;
   }
   100% {
-    transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(0.2);
+    transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(0.1);
     opacity: 0;
   }
 }
