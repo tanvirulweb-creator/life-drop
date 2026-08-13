@@ -9,7 +9,6 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
-// Global user profile details
 function getUser() {
   const user = localStorage.getItem('user');
   return user ? JSON.parse(user) : null;
@@ -28,6 +27,8 @@ function getHeaders() {
 // Global Application State
 let currentUser = getUser();
 let donors = [];
+let homeDonors = [];
+let homeVisibleCount = 16;
 
 // Initialize Application on Dom Content Loaded
 document.addEventListener("DOMContentLoaded", function () {
@@ -55,6 +56,7 @@ async function initApp() {
 
   updateNav();
   await fetchDonors();
+  await fetchHomeDonors();
   
   // Set initial page from hash or default to home
   const initialPage = location.hash.slice(1) || "home";
@@ -253,13 +255,90 @@ if (homeSearchButton) {
   homeSearchButton.onclick = async function () {
     const homeBlood = document.getElementById("homeBlood").value;
     const homeLocation = document.getElementById("homeLocation").value;
+    await fetchHomeDonors(homeBlood, homeLocation);
+  };
+}
 
-    document.getElementById("donorBlood").value = homeBlood;
-    document.getElementById("donorLocation").value = homeLocation;
+// Hook Auto-filter on blood group selection
+const homeBloodSelect = document.getElementById("homeBlood");
+if (homeBloodSelect) {
+  homeBloodSelect.onchange = async function() {
+    const homeBlood = homeBloodSelect.value;
+    const homeLocation = document.getElementById("homeLocation").value;
+    await fetchHomeDonors(homeBlood, homeLocation);
+  };
+}
 
-    await fetchDonors(homeBlood, homeLocation);
-    showPage("donors");
-    history.replaceState(null, "", "#donors");
+// Home page donors dynamic loaders
+async function fetchHomeDonors(blood = '', location = '') {
+  try {
+    let url = '/api/donors';
+    const params = [];
+    if (blood) params.push(`blood=${encodeURIComponent(blood)}`);
+    if (location) params.push(`location=${encodeURIComponent(location)}`);
+    if (params.length > 0) url += `?${params.join('&')}`;
+
+    const res = await fetch(url);
+    if (res.ok) {
+      homeDonors = await res.json();
+      homeVisibleCount = 16;
+      renderHomeDonors();
+    }
+  } catch (err) {
+    console.error('Error fetching home donors:', err);
+  }
+}
+
+function renderHomeDonors() {
+  const grid = document.getElementById("homeDonorGrid");
+  if (!grid) return;
+
+  const visibleDonors = homeDonors.slice(0, homeVisibleCount);
+
+  if (visibleDonors.length === 0) {
+    grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #7d8692; padding: 40px 0;">No donors match your search criteria.</p>`;
+    document.getElementById("homeLoadMoreContainer").style.display = "none";
+    return;
+  }
+
+  grid.innerHTML = visibleDonors
+    .map(donor => `
+      <article class="donor-card">
+        <div class="avatar">
+          ${donor.initials}
+        </div>
+        <div class="donor-info">
+          <b>${donor.name}</b>
+          <span>${donor.location}</span>
+          <small>${donor.distance} away</small>
+        </div>
+        <b class="blood-badge">${donor.blood}</b>
+        <button
+          class="btn btn-outline request-donor"
+          data-name="${donor.name}"
+          data-blood="${donor.blood}"
+          data-phone="${donor.phone || ''}"
+          data-email="${donor.email || ''}">
+          Request
+        </button>
+      </article>
+    `)
+    .join("");
+
+  const loadMoreContainer = document.getElementById("homeLoadMoreContainer");
+  if (homeDonors.length > homeVisibleCount) {
+    loadMoreContainer.style.display = "block";
+  } else {
+    loadMoreContainer.style.display = "none";
+  }
+}
+
+// Hook Load More button on home page
+const homeLoadMoreBtn = document.getElementById("homeLoadMoreBtn");
+if (homeLoadMoreBtn) {
+  homeLoadMoreBtn.onclick = function() {
+    homeVisibleCount += 16;
+    renderHomeDonors();
   };
 }
 
