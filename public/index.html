@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Life Drop | Blood Donation & Donor Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+  <a class="brand" href="#home" data-page="home">
+    <span class="brand-mark">+</span>
+    <span><b>Life</b> Drop</span>
+  </a>
+
+  <nav class="nav-links">
+    <a href="#home" data-page="home">Home</a>
+    <a href="#donors" data-page="donors">Find Donors</a>
+    <a href="#request" data-page="request">Emergency Request</a>
+    <a href="#about" data-page="about">About</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="btn btn-outline" data-open="login">Login</button>
+    <button class="btn btn-primary" data-open="register">
+      Become a Donor
+    </button>
+  </div>
+
+  <button class="mobile-menu" id="mobileMenu">☰</button>
+
+</header>
+
+
+<main>
+
+<!-- ================= HOME PAGE ================= -->
+
+<section id="home" class="page active">
+
+  <div class="hero">
+
+    <div class="hero-copy">
+
+      <span class="eyebrow">
+        SAVE A LIFE • DONATE BLOOD
+      </span>
+
+      <h1>
+        Every drop can be<br>
+        <span>someone's lifeline.</span>
+      </h1>
+
+      <p>
+        Life Drop connects blood donors, patients, hospitals
+        and blood banks through one simple, trusted platform.
+      </p>
+
+      <div class="hero-buttons">
+
+        <button
+          class="btn btn-primary btn-lg"
+          data-open="register">
+          Become a Donor →
+        </button>
+
+        <button
+          class="btn btn-light btn-lg"
+          data-page="donors">
+          Find Blood
+        </button>
+
+      </div>
+
+      <div class="trust-row">
+
+        <div>
+          <strong>1,245+</strong>
+          <small>Registered Donors</small>
+        </div>
+
+        <div>
+          <strong>234</strong>
+          <small>Available Units</small>
+        </div>
+
+        <div>
+          <strong>18</strong>
+          <small>Active Requests</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-art">
+
+      <div class="blood-drop">
+        <span>+</span>
+      </div>
+
+      <div class="floating-card card-one">
+        <b>O+</b>
+        <span>12 donors nearby</span>
+      </div>
+
+      <div class="floating-card card-two">
+
+        <span class="pulse-dot"></span>
+
+        <b>Emergency</b>
+
+        <small>Request matched</small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="search-panel">
+
+    <div>
+
+      <span class="mini-label">
+        QUICK SEARCH
+      </span>
+
+      <h2>Find a blood donor</h2>
+
+    </div>
+
+    <div class="search-fields">
+
+      <label>
+        Blood Group
+
+        <select id="homeBlood">
+
+          <option value="">Any group</option>
+
+          <option>O+</option>
+          <option>O-</option>
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>AB+</option>
+          <option>AB-</option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+        Location
+
+        <input
+          id="homeLocation"
+          placeholder="e.g. Mirpur, Dhaka">
+
+      </label>
+
+
+      <button
+        class="btn btn-primary"
+        id="homeSearch">
+
+        Search Donors
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="section intro-section">
+
+    <div>
+
+      <span class="eyebrow">
+        WHY LIFE DROP?
+      </span>
+
+      <h2>
+        Blood should be available<br>
+        when it matters most.
+      </h2>
+
+    </div>
+
+    <p>
+      Our platform makes donor discovery faster and
+      emergency coordination easier while keeping donor
+      information organized and secure.
+    </p>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <article class="feature-card">
+
+      <div class="icon red">⌖</div>
+
+      <h3>Find Nearby Donors</h3>
+
+      <p>
+        Search by blood group and location to discover
+        available donors quickly.
+      </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+      <div class="icon blue">♡</div>
+
+      <h3>Emergency Requests</h3>
+
+      <p>
+        Create urgent blood requests and reach suitable
+        donors without delay.
+      </p>
+
+    </article>
+
+
+    <article class="feature-card">
+
+      <div class="icon green">✓</div>
+
+      <h3>Donor Management</h3>
+
+      <p>
+        Keep your profile, availability and donation history
+        up to date.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DONOR PAGE ================= -->
+
+<section id="donors" class="page">
+
+  <div class="page-heading">
+
+    <div>
+
+      <span class="eyebrow">
+        DONOR DIRECTORY
+      </span>
+
+      <h1>Find a blood donor</h1>
+
+      <p>
+        Search available donors by blood group and location.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="filter-bar">
+
+    <label>
+
+      Blood Group
+
+      <select id="donorBlood">
+
+        <option value="">All groups</option>
+
+        <option>O+</option>
+        <option>O-</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+
+      </select>
+
+    </label>
+
+
+    <label>
+
+      Location
+
+      <input
+        id="donorLocation"
+        placeholder="Search location">
+
+    </label>
+
+
+    <button
+      class="btn btn-primary"
+      id="donorSearch">
+
+      Search
+
+    </button>
+
+  </div>
+
+
+  <div class="results-head">
+
+    <h2>Available donors</h2>
+
+    <span id="resultCount">
+      4 donors found
+    </span>
+
+  </div>
+
+
+  <div
+    class="donor-grid"
+    id="donorGrid">
+  </div>
+
+</section>
+
+
+<!-- ================= EMERGENCY REQUEST ================= -->
+
+<section id="request" class="page">
+
+  <div class="form-page">
+
+    <div class="form-intro">
+
+      <span class="eyebrow">
+        URGENT HELP
+      </span>
+
+      <h1>
+        Request blood<br>
+        <span>in an emergency.</span>
+      </h1>
+
+      <p>
+        Submit the details below. Life Drop helps you
+        identify matching donors so you can act faster.
+      </p>
+
+
+      <div class="emergency-note">
+
+        <b>Emergency hotline</b>
+
+        <strong>
+          +880 1700-000000
+        </strong>
+
+        <small>
+          Available 24/7
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <form
+      class="form-card"
+      id="requestForm">
+
+      <div class="form-title">
+
+        <h2>
+          Emergency Blood Request
+        </h2>
+
+        <span>
+          All fields marked * are required.
+        </span>
+
+      </div>
+
+
+      <div class="form-grid">
+
+        <label>
+
+          Patient Name *
+
+          <input
+            required
+            placeholder="Enter patient name">
+
+        </label>
+
+
+        <label>
+
+          Required Blood Group *
+
+          <select required>
+
+            <option value="">
+              Select group
+            </option>
+
+            <option>O+</option>
+            <option>O-</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          Hospital Name *
+
+          <input
+            required
+            placeholder="Hospital / clinic">
+
+        </label>
+
+
+        <label>
+
+          Location *
+
+          <input
+            required
+            placeholder="Area, city">
+
+        </label>
+
+
+        <label>
+
+          Contact Number *
+
+          <input
+            required
+            placeholder="+880 1XXXXXXXXX">
+
+        </label>
+
+
+        <label>
+
+          Number of Units *
+
+          <input
+            required
+            type="number"
+            min="1"
+            max="20"
+            placeholder="e.g. 2">
+
+        </label>
+
+      </div>
+
+
+      <label>
+
+        Urgency Level *
+
+        <div class="urgency">
+
+          <label>
+            <input
+              type="radio"
+              name="urgency"
+              value="High"
+              checked>
+
+            <span class="high">
+              High
+            </span>
+          </label>
+
+
+          <label>
+
+            <input
+              type="radio"
+              name="urgency"
+              value="Medium">
+
+            <span class="medium">
+              Medium
+            </span>
+
+          </label>
+
+
+          <label>
+
+            <input
+              type="radio"
+              name="urgency"
+              value="Low">
+
+            <span class="low">
+              Low
+            </span>
+
+          </label>
+
+        </div>
+
+      </label>
+
+
+      <label>
+
+        Additional Message
+
+        <textarea
+          rows="4"
+          placeholder="Add any important information...">
+        </textarea>
+
+      </label>
+
+
+      <button
+        class="btn btn-primary btn-lg full"
+        type="submit">
+
+        Submit Emergency Request
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="page">
+
+  <div class="about-hero">
+
+    <span class="eyebrow">
+      ABOUT LIFE DROP
+    </span>
+
+    <h1>
+      Technology that brings<br>
+      <span>people together to save lives.</span>
+    </h1>
+
+    <p>
+      Life Drop is a web-based Blood Donation and Donor
+      Management System designed to reduce the time needed
+      to find suitable blood donors.
+    </p>
+
+  </div>
+
+
+  <div class="stats-grid">
+
+    <div>
+      <strong>1,245+</strong>
+      <span>Donors</span>
+    </div>
+
+    <div>
+      <strong>234</strong>
+      <span>Blood Units</span>
+    </div>
+
+    <div>
+      <strong>18</strong>
+      <span>Emergency Requests</span>
+    </div>
+
+    <div>
+      <strong>24/7</strong>
+      <span>Support</span>
+    </div>
+
+  </div>
+
+
+  <div class="about-grid">
+
+    <article>
+
+      <span class="number">
+        01
+      </span>
+
+      <h2>For Donors</h2>
+
+      <p>
+        Create a profile, set your availability,
+        track donation history and respond to people
+        who need your blood.
+      </p>
+
+    </article>
+
+
+    <article>
+
+      <span class="number">
+        02
+      </span>
+
+      <h2>For Patients</h2>
+
+      <p>
+        Search donors using blood group and location,
+        then send a request when you need help.
+      </p>
+
+    </article>
+
+
+    <article>
+
+      <span class="number">
+        03
+      </span>
+
+      <h2>For Hospitals</h2>
+
+      <p>
+        Coordinate emergency requests and maintain
+        organized blood-related information.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DONOR DASHBOARD ================= -->
+
+<section id="dashboard" class="page">
+
+  <div class="dashboard-top">
+
+    <div>
+
+      <span class="eyebrow">
+        MY ACCOUNT
+      </span>
+
+      <h1>Donor Dashboard</h1>
+
+      <p>
+        Welcome back, Rakib Hasan.
+      </p>
+
+    </div>
+
+
+    <span class="availability">
+
+      <i></i>
+
+      Available to donate
+
+    </span>
+
+  </div>
+
+
+  <div class="dash-grid">
+
+    <aside class="dash-sidebar">
+
+      <div class="profile-mini">
+
+        <div class="avatar">
+          RH
+        </div>
+
+        <b>
+          Rakib Hasan
+        </b>
+
+        <span>
+          O+ • Mirpur, Dhaka
+        </span>
+
+      </div>
+
+
+      <a class="active">
+        Overview
+      </a>
+
+      <a>
+        My Profile
+      </a>
+
+      <a>
+        Donation History
+      </a>
+
+      <a>
+        Emergency Requests
+      </a>
+
+      <a>
+        Settings
+      </a>
+
+
+      <button
+        class="logout"
+        id="logoutBtn">
+
+        Log out
+
+      </button>
+
+    </aside>
+
+
+    <div class="dash-content">
+
+      <div class="dash-cards">
+
+        <div>
+
+          <span>
+            Last Donation
+          </span>
+
+          <b>
+            12 Mar 2026
+          </b>
+
+          <small>
+            Completed
+          </small>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Next Eligible Date
+          </span>
+
+          <b>
+            12 Jun 2026
+          </b>
+
+          <small>
+            Eligible now
+          </small>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Total Donations
+          </span>
+
+          <b>
+            8
+          </b>
+
+          <small>
+            Thank you for saving lives
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="dash-panels">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              Recent Activity
+            </h2>
+
+            <a>
+              View all
+            </a>
+
+          </div>
+
+
+          <div class="activity">
+
+            <i>✓</i>
+
+            <div>
+
+              <b>
+                Donation completed
+              </b>
+
+              <span>
+                12 March 2026 • City Hospital
+              </span>
+
+            </div>
+
+            <strong>
+              +1 unit
+            </strong>
+
+          </div>
+
+
+          <div class="activity">
+
+            <i>♡</i>
+
+            <div>
+
+              <b>
+                Availability updated
+              </b>
+
+              <span>
+                10 March 2026
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="activity">
+
+            <i>!</i>
+
+            <div>
+
+              <b>
+                Emergency request nearby
+              </b>
+
+              <span>
+                O+ needed • 2.1 km away
+              </span>
+
+            </div>
+
+            <button class="text-btn">
+              View
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel donate-panel">
+
+          <div class="big-drop">
+            +
+          </div>
+
+          <h2>
+            Ready to donate?
+          </h2>
+
+          <p>
+            Your next donation can help someone in need.
+          </p>
+
+          <button
+            class="btn btn-primary"
+            id="donateBtn">
+
+            Donate Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section id="admin" class="page">
+
+  <div class="dashboard-top">
+
+    <div>
+
+      <span class="eyebrow">
+        ADMINISTRATION
+      </span>
+
+      <h1>
+        Admin Dashboard
+      </h1>
+
+      <p>
+        Monitor donors, requests and blood stock.
+      </p>
+
+    </div>
+
+    <button
+      class="btn btn-outline"
+      data-page="home">
+
+      Exit Admin
+
+    </button>
+
+  </div>
+
+
+  <div class="admin-stats">
+
+    <div>
+
+      <span>
+        Total Registered Donors
+      </span>
+
+      <strong>
+        1,245
+      </strong>
+
+      <small>
+        ↑ 12% this month
+      </small>
+
+    </div>
+
+
+    <div>
+
+      <span>
+        Available Blood Units
+      </span>
+
+      <strong>
+        234
+      </strong>
+
+      <small>
+        Across 8 groups
+      </small>
+
+    </div>
+
+
+    <div>
+
+      <span>
+        Pending Requests
+      </span>
+
+      <strong>
+        18
+      </strong>
+
+      <small class="danger">
+        Needs attention
+      </small>
+
+    </div>
+
+
+    <div>
+
+      <span>
+        Successful Donations
+      </span>
+
+      <strong>
+        846
+      </strong>
+
+      <small>
+        All time
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <div class="admin-grid">
+
+    <div class="panel">
+
+      <div class="panel-head">
+
+        <h2>
+          Recent Emergency Requests
+        </h2>
+
+        <a>
+          View all
+        </a>
+
+      </div>
+
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Patient</th>
+            <th>Blood</th>
+            <th>Hospital</th>
+            <th>Urgency</th>
+            <th>Status</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+
+            <td>
+              Tanvir Ahmed
+            </td>
+
+            <td>
+              <b class="blood-badge">
+                O+
+              </b>
+            </td>
+
+            <td>
+              City Hospital
+            </td>
+
+            <td>
+              <span class="status high">
+                High
+              </span>
+            </td>
+
+            <td>
+              <span class="status pending">
+                Pending
+              </span>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              Riya Das
+            </td>
+
+            <td>
+              <b class="blood-badge">
+                A+
+              </b>
+            </td>
+
+            <td>
+              Square Hospital
+            </td>
+
+            <td>
+              <span class="status medium">
+                Medium
+              </span>
+            </td>
+
+            <td>
+              <span class="status matched">
+                Matched
+              </span>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              Imran Hossain
+            </td>
+
+            <td>
+              <b class="blood-badge">
+                B-
+              </b>
+            </td>
+
+            <td>
+              DMCH
+            </td>
+
+            <td>
+              <span class="status high">
+                High
+              </span>
+            </td>
+
+            <td>
+              <span class="status pending">
+                Pending
+              </span>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="panel stock">
+
+      <div class="panel-head">
+
+        <h2>
+          Blood Stock
+        </h2>
+
+        <a>
+          Manage
+        </a>
+
+      </div>
+
+
+      <div class="stock-row">
+
+        <span>O+</span>
+
+        <div>
+          <i style="width:78%"></i>
+        </div>
+
+        <b>72</b>
+
+      </div>
+
+
+      <div class="stock-row">
+
+        <span>A+</span>
+
+        <div>
+          <i style="width:62%"></i>
+        </div>
+
+        <b>58</b>
+
+      </div>
+
+
+      <div class="stock-row">
+
+        <span>B+</span>
+
+        <div>
+          <i style="width:45%"></i>
+        </div>
+
+        <b>41</b>
+
+      </div>
+
+
+      <div class="stock-row">
+
+        <span>AB+</span>
+
+        <div>
+          <i style="width:29%"></i>
+        </div>
+
+        <b>23</b>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-brand">
+
+    <span class="brand-mark">
+      +
+    </span>
+
+    <b>
+      Life Drop
+    </b>
+
+    <p>
+      Every drop matters. Every donor counts.
+    </p>
+
+  </div>
+
+
+  <div>
+
+    <b>Platform</b>
+
+    <a data-page="donors">
+      Find Donors
+    </a>
+
+    <a data-page="request">
+      Emergency Request
+    </a>
+
+    <a data-page="about">
+      About Us
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <b>Support</b>
+
+    <a>
+      How it works
+    </a>
+
+    <a>
+      Privacy Policy
+    </a>
+
+    <a>
+      Contact
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <b>
+      Emergency Hotline
+    </b>
+
+    <strong>
+      +880 1700-000000
+    </strong>
+
+    <small>
+      Available 24 hours
+    </small>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= LOGIN / REGISTER MODAL ================= -->
+
+<div
+  class="modal"
+  id="authModal">
+
+  <div class="modal-box">
+
+    <button
+      class="modal-close"
+      id="closeModal">
+
+      ×
+
+    </button>
+
+    <div id="authContent"></div>
+
+  </div>
+
+</div>
+
+
+<div
+  class="toast"
+  id="toast">
+</div>
+
+
+<!-- JavaScript File -->
+<script src="script.js"></script>
+
+</body>
+</html>
