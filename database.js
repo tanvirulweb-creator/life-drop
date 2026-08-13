@@ -1,16 +1,19 @@
 const initSqlJs = require('sql.js');
 const fs = require('fs');
+const path = require('path');
 
 class Database {
-  constructor(path, callback) {
+  constructor(dbPath, callback) {
     this.ready = false;
     this.queue = [];
-    this.path = path;
+    this.path = dbPath;
 
-    initSqlJs().then(SQL => {
+    initSqlJs({
+      locateFile: file => path.join(__dirname, file)
+    }).then(SQL => {
       let buffer = null;
-      if (path !== ':memory:' && fs.existsSync(path)) {
-        buffer = fs.readFileSync(path);
+      if (dbPath !== ':memory:' && fs.existsSync(dbPath)) {
+        buffer = fs.readFileSync(dbPath);
       }
       this.db = new SQL.Database(buffer);
       this.ready = true;
